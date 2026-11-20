@@ -4,10 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 <title>SA Orientation & BBQ Bingo</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/caveat@latest/latin-400-normal.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/caveat@latest/latin-700-normal.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/kalam@latest/latin-400-normal.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/kalam@latest/latin-700-normal.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
@@ -22,12 +21,14 @@
     background-image:
       radial-gradient(circle at 20% 10%, rgba(200,160,100,0.08) 0%, transparent 40%),
       radial-gradient(circle at 80% 70%, rgba(180,140,90,0.06) 0%, transparent 40%);
-    font-family: 'Kalam', cursive;
+    font-family: 'Kalam', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     color: #2b2418;
     padding: 8px 6px 10px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   .wrap {
@@ -45,7 +46,7 @@
   }
 
   header h1 {
-    font-family: 'Caveat', cursive;
+    font-family: 'Caveat', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     font-size: clamp(1.6em, 6.5vw, 2.4em);
     font-weight: 700;
     color: #1a1a1a;
@@ -59,7 +60,7 @@
 
   .sub {
     text-align: center;
-    font-family: 'Caveat', cursive;
+    font-family: 'Caveat', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     font-size: clamp(1em, 3.5vw, 1.2em);
     color: #5a4a35;
     margin-bottom: 14px;
@@ -81,7 +82,7 @@
     background: #fffef8;
     border: 2px solid #2b2418;
     border-radius: 10px;
-    font-family: 'Caveat', cursive;
+    font-family: 'Caveat', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     font-size: clamp(1.4em, 5vw, 1.9em);
     font-weight: 700;
     color: #2b2418;
@@ -110,7 +111,7 @@
   .set-btn .label {
     display: block;
     font-size: 0.55em;
-    font-family: 'Kalam', cursive;
+    font-family: 'Kalam', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     font-weight: 400;
     color: #5a4a35;
     margin-top: 2px;
@@ -133,7 +134,7 @@
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    font-family: 'Caveat', cursive;
+    font-family: 'Caveat', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     font-size: clamp(1em, 3.5vw, 1.2em);
     font-weight: 700;
     color: #c0392b;
@@ -150,7 +151,7 @@
   .set-badge {
     text-align: center;
     margin-bottom: 6px;
-    font-family: 'Caveat', cursive;
+    font-family: 'Caveat', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     font-size: clamp(0.95em, 3.5vw, 1.15em);
     color: #5a4a35;
   }
@@ -193,7 +194,7 @@
   }
 
   .card-title {
-    font-family: 'Caveat', cursive;
+    font-family: 'Caveat', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     font-size: clamp(1.2em, 4.5vw, 1.6em);
     font-weight: 700;
     color: #1a1a1a;
@@ -201,7 +202,7 @@
   }
 
   .reset-btn {
-    font-family: 'Kalam', cursive;
+    font-family: 'Kalam', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     font-size: clamp(0.65em, 2.2vw, 0.78em);
     color: #8b6f47;
     background: transparent;
@@ -233,7 +234,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-family: 'Kalam', cursive;
+    font-family: 'Kalam', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     font-size: clamp(0.62em, 2.4vw, 0.82em);
     color: #1a1a1a;
     cursor: pointer;
@@ -271,7 +272,7 @@
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%) rotate(-8deg);
-    font-family: 'Caveat', cursive;
+    font-family: 'Caveat', 'Comic Sans MS', cursive, sans-serif;
     font-size: clamp(1.6em, 6vw, 2.4em);
     font-weight: 700;
     color: #c0392b;
@@ -302,7 +303,7 @@
     cursor: pointer;
     box-shadow: 2px 2px 0 rgba(0,0,0,0.08);
     z-index: 50;
-    font-family: 'Caveat', cursive;
+    font-family: 'Caveat', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     font-weight: 700;
   }
   .admin-trigger:hover { background: #fff3cd; }
@@ -333,7 +334,7 @@
   }
 
   .modal h2 {
-    font-family: 'Caveat', cursive;
+    font-family: 'Caveat', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     font-size: clamp(1.8em, 5vw, 2.2em);
     color: #1a1a1a;
     margin-bottom: 4px;
@@ -349,12 +350,12 @@
     font-size: clamp(1.3em, 4vw, 1.6em);
     cursor: pointer;
     color: #8b6f47;
-    font-family: 'Caveat', cursive;
+    font-family: 'Caveat', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
   }
 
   .modal label {
     display: block;
-    font-family: 'Caveat', cursive;
+    font-family: 'Caveat', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     font-size: clamp(1.1em, 3.5vw, 1.4em);
     color: #2b2418;
     margin: 12px 0 4px;
@@ -365,7 +366,7 @@
   .modal select,
   .modal textarea {
     width: 100%;
-    font-family: 'Kalam', cursive;
+    font-family: 'Kalam', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     font-size: clamp(0.85em, 2.5vw, 0.95em);
     padding: 7px 9px;
     border: 1px solid #b8a47e;
@@ -385,7 +386,7 @@
     font-size: clamp(0.7em, 2vw, 0.8em);
     color: #8b6f47;
     margin-top: 2px;
-    font-family: 'Kalam', cursive;
+    font-family: 'Kalam', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
   }
 
   .tabs {
@@ -396,7 +397,7 @@
     flex-wrap: wrap;
   }
   .tab {
-    font-family: 'Caveat', cursive;
+    font-family: 'Caveat', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     font-size: clamp(1em, 3vw, 1.3em);
     padding: 5px 12px;
     background: transparent;
@@ -422,7 +423,7 @@
   }
   .item-row input {
     flex: 1;
-    font-family: 'Kalam', cursive;
+    font-family: 'Kalam', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     font-size: clamp(0.75em, 2.2vw, 0.85em);
     padding: 5px 7px;
     border: 1px solid #b8a47e;
@@ -431,7 +432,7 @@
   }
   .item-row input:focus { outline: none; border-color: #c0392b; background: white; }
   .item-row .num {
-    font-family: 'Caveat', cursive;
+    font-family: 'Caveat', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     color: #8b6f47;
     width: 22px;
     font-size: clamp(0.85em, 2.5vw, 0.95em);
@@ -446,7 +447,7 @@
   }
 
   .add-btn {
-    font-family: 'Kalam', cursive;
+    font-family: 'Kalam', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     background: transparent;
     border: 1px dashed #8b6f47;
     color: #8b6f47;
@@ -467,7 +468,7 @@
   }
 
   .btn {
-    font-family: 'Caveat', cursive;
+    font-family: 'Caveat', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     font-size: clamp(1em, 3vw, 1.3em);
     padding: 5px 16px;
     border: 2px solid #2b2418;
@@ -483,7 +484,7 @@
   .btn.danger { background: #fff; color: #c0392b; border-color: #c0392b; }
 
   .saved-toast {
-    font-family: 'Caveat', cursive;
+    font-family: 'Caveat', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     color: #2e7d32;
     font-size: clamp(0.95em, 2.8vw, 1.1em);
     opacity: 0;
@@ -534,7 +535,7 @@
   }
 
   .bingo-title {
-    font-family: 'Caveat', cursive;
+    font-family: 'Caveat', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     font-size: clamp(3.5em, 12vw, 5em);
     font-weight: 700;
     color: #c0392b;
@@ -553,7 +554,7 @@
   }
 
   .bingo-subtitle {
-    font-family: 'Caveat', cursive;
+    font-family: 'Caveat', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     font-size: clamp(1.3em, 4vw, 1.7em);
     color: #2b2418;
     margin-bottom: 14px;
@@ -562,7 +563,7 @@
   }
 
   .bingo-time {
-    font-family: 'Kalam', cursive;
+    font-family: 'Kalam', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     font-size: clamp(1.1em, 3.5vw, 1.4em);
     color: #2b2418;
     background: #fff3cd;
@@ -574,7 +575,7 @@
     z-index: 1;
   }
   .bingo-time .label {
-    font-family: 'Caveat', cursive;
+    font-family: 'Caveat', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     font-size: clamp(0.8em, 2.5vw, 0.95em);
     color: #8b6f47;
     display: block;
@@ -587,7 +588,7 @@
   }
 
   .bingo-rank {
-    font-family: 'Caveat', cursive;
+    font-family: 'Caveat', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     font-size: clamp(1.5em, 5vw, 1.9em);
     color: #c0392b;
     margin: 10px 0;
@@ -596,7 +597,7 @@
   }
 
   .bingo-hint {
-    font-family: 'Kalam', cursive;
+    font-family: 'Kalam', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     font-size: clamp(0.75em, 2.2vw, 0.9em);
     color: #5a4a35;
     margin: 10px 0;
@@ -605,7 +606,7 @@
   }
 
   .bingo-close {
-    font-family: 'Caveat', cursive;
+    font-family: 'Caveat', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     font-size: clamp(1.2em, 3.5vw, 1.5em);
     padding: 8px 28px;
     border: 2px solid #c0392b;
