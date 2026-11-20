@@ -1,17 +1,1185 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-    <title>SA Orientation & BBQ Bingo</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/caveat@latest/latin-400-normal.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/caveat@latest/latin-700-normal.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/kalam@latest/latin-400-normal.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/kalam@latest/latin-700-normal.css" />
-    <script type="module" crossorigin src="./assets/index-Dyj84SVJ.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-S8dIfL6V.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<title>SA Orientation & BBQ Bingo</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/caveat@latest/latin-400-normal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/caveat@latest/latin-700-normal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/kalam@latest/latin-400-normal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/kalam@latest/latin-700-normal.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  html, body {
+    height: 100%;
+    overflow-x: hidden;
+    touch-action: manipulation;
+  }
+
+  body {
+    background: #f4ede0;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(200,160,100,0.08) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(180,140,90,0.06) 0%, transparent 40%);
+    font-family: 'Kalam', cursive;
+    color: #2b2418;
+    padding: 8px 6px 10px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wrap {
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  header h1 {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(1.6em, 6.5vw, 2.4em);
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: -0.5px;
+    line-height: 1;
+    transform: rotate(-1.2deg);
+    display: inline-block;
+  }
+
+  header h1 span { color: #c0392b; }
+
+  .sub {
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    font-size: clamp(1em, 3.5vw, 1.2em);
+    color: #5a4a35;
+    margin-bottom: 14px;
+  }
+
+  .landing {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+    padding: 10px 0;
+  }
+
+  .set-btn {
+    display: block;
+    width: 100%;
+    padding: clamp(16px, 4vw, 22px) 20px;
+    background: #fffef8;
+    border: 2px solid #2b2418;
+    border-radius: 10px;
+    font-family: 'Caveat', cursive;
+    font-size: clamp(1.4em, 5vw, 1.9em);
+    font-weight: 700;
+    color: #2b2418;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 rgba(43,36,24,0.15);
+    transition: all 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .set-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 6px; height: 100%;
+    background: #c0392b;
+  }
+
+  .set-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 rgba(43,36,24,0.15);
+  }
+
+  .set-btn:hover { background: #fff3cd; }
+
+  .set-btn .label {
+    display: block;
+    font-size: 0.55em;
+    font-family: 'Kalam', cursive;
+    font-weight: 400;
+    color: #5a4a35;
+    margin-top: 2px;
+  }
+
+  .set-btn.a::before { background: #c0392b; }
+  .set-btn.b::before { background: #4facfe; }
+  .set-btn.c::before { background: #2e7d32; }
+
+  .card-view {
+    display: none;
+    flex: 1;
+    flex-direction: column;
+  }
+
+  .card-view.active { display: flex; }
+  .landing.hidden { display: none; }
+
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Caveat', cursive;
+    font-size: clamp(1em, 3.5vw, 1.2em);
+    font-weight: 700;
+    color: #c0392b;
+    background: transparent;
+    border: 2px solid #c0392b;
+    border-radius: 30px;
+    padding: 4px 14px;
+    cursor: pointer;
+    margin-bottom: 8px;
+    box-shadow: 2px 2px 0 rgba(192,57,43,0.15);
+  }
+  .back-btn:active { transform: translate(1px,1px); box-shadow: 1px 1px 0 rgba(192,57,43,0.15); }
+
+  .set-badge {
+    text-align: center;
+    margin-bottom: 6px;
+    font-family: 'Caveat', cursive;
+    font-size: clamp(0.95em, 3.5vw, 1.15em);
+    color: #5a4a35;
+  }
+  .set-badge b {
+    color: #c0392b;
+    border: 2px solid #c0392b;
+    padding: 0 10px;
+    border-radius: 50px;
+    transform: rotate(-2deg);
+    display: inline-block;
+    margin: 0 4px;
+  }
+
+  .card {
+    background: #fffef8;
+    border: 1px solid #b8a47e;
+    padding: clamp(6px, 1.5vw, 10px);
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08), 5px 5px 0 rgba(139,111,71,0.12);
+    background-image:
+      linear-gradient(#e8dcc0 1px, transparent 1px),
+      linear-gradient(90deg, #e8dcc0 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: -1px -1px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid #2b2418;
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+
+  .card-title {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(1.2em, 4.5vw, 1.6em);
+    font-weight: 700;
+    color: #1a1a1a;
+    transform: rotate(-1deg);
+  }
+
+  .reset-btn {
+    font-family: 'Kalam', cursive;
+    font-size: clamp(0.65em, 2.2vw, 0.78em);
+    color: #8b6f47;
+    background: transparent;
+    border: 1px solid #8b6f47;
+    border-radius: 20px;
+    padding: 2px 9px;
+    cursor: pointer;
+  }
+  .reset-btn:hover { background: rgba(139,111,71,0.1); }
+  .reset-btn:active { background: rgba(139,111,71,0.2); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    border: 2px solid #2b2418;
+    position: relative;
+    z-index: 1;
+    background: #fffef8;
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+  }
+
+  .cell {
+    border: 1px solid #8b6f47;
+    padding: clamp(2px, 0.8vw, 4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Kalam', cursive;
+    font-size: clamp(0.62em, 2.4vw, 0.82em);
+    color: #1a1a1a;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.15s;
+    line-height: 1.15;
+    overflow: visible;
+    word-break: break-word;
+    font-weight: 600;
+    hyphens: auto;
+    min-height: 0;
+  }
+
+  .cell span {
+    display: block;
+    width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  .cell:hover { background: rgba(192, 57, 43, 0.06); }
+
+  .cell.center-item {
+    background: #fff3cd;
+    font-weight: 700;
+    font-size: clamp(0.68em, 2.6vw, 0.88em);
+  }
+
+  .cell.marked {
+    background: rgba(192, 57, 43, 0.12);
+  }
+
+  .cell.marked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(-8deg);
+    font-family: 'Caveat', cursive;
+    font-size: clamp(1.6em, 6vw, 2.4em);
+    font-weight: 700;
+    color: #c0392b;
+    pointer-events: none;
+  }
+
+  .cell.marked span { position: relative; z-index: 1; }
+
+  .cell.bingo-cell {
+    animation: bingoPulse 1s ease-in-out infinite;
+  }
+  @keyframes bingoPulse {
+    0%, 100% { background: rgba(255, 215, 0, 0.3); }
+    50% { background: rgba(255, 215, 0, 0.6); }
+  }
+
+  .admin-trigger {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: clamp(30px, 8vw, 38px);
+    height: clamp(30px, 8vw, 38px);
+    border-radius: 50%;
+    background: #fffdf5;
+    border: 1px solid #b8a47e;
+    color: #8b6f47;
+    font-size: clamp(0.9em, 3vw, 1.1em);
+    cursor: pointer;
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.08);
+    z-index: 50;
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+  }
+  .admin-trigger:hover { background: #fff3cd; }
+
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(43,36,24,0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 16px;
+  }
+  .modal-backdrop.open { display: flex; }
+
+  .modal {
+    background: #fffef8;
+    border: 2px solid #2b2418;
+    border-radius: 6px;
+    padding: clamp(16px, 4vw, 24px);
+    max-width: 640px;
+    width: 100%;
+    max-height: 92vh;
+    overflow-y: auto;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.15);
+    position: relative;
+  }
+
+  .modal h2 {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(1.8em, 5vw, 2.2em);
+    color: #1a1a1a;
+    margin-bottom: 4px;
+    transform: rotate(-1deg);
+  }
+
+  .modal .close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: clamp(1.3em, 4vw, 1.6em);
+    cursor: pointer;
+    color: #8b6f47;
+    font-family: 'Caveat', cursive;
+  }
+
+  .modal label {
+    display: block;
+    font-family: 'Caveat', cursive;
+    font-size: clamp(1.1em, 3.5vw, 1.4em);
+    color: #2b2418;
+    margin: 12px 0 4px;
+  }
+
+  .modal input[type=text],
+  .modal input[type=url],
+  .modal select,
+  .modal textarea {
+    width: 100%;
+    font-family: 'Kalam', cursive;
+    font-size: clamp(0.85em, 2.5vw, 0.95em);
+    padding: 7px 9px;
+    border: 1px solid #b8a47e;
+    background: #fffdf5;
+    border-radius: 3px;
+    color: #2b2418;
+    resize: vertical;
+  }
+  .modal textarea { min-height: 70px; line-height: 1.5; }
+  .modal input:focus, .modal select:focus, .modal textarea:focus {
+    outline: none;
+    border-color: #c0392b;
+    background: white;
+  }
+
+  .hint {
+    font-size: clamp(0.7em, 2vw, 0.8em);
+    color: #8b6f47;
+    margin-top: 2px;
+    font-family: 'Kalam', cursive;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 4px;
+    margin: 14px 0 8px;
+    border-bottom: 2px solid #2b2418;
+    flex-wrap: wrap;
+  }
+  .tab {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(1em, 3vw, 1.3em);
+    padding: 5px 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #8b6f47;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+  }
+  .tab.active {
+    color: #c0392b;
+    border-bottom-color: #c0392b;
+  }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .item-row {
+    display: flex;
+    gap: 5px;
+    margin: 4px 0;
+    align-items: center;
+  }
+  .item-row input {
+    flex: 1;
+    font-family: 'Kalam', cursive;
+    font-size: clamp(0.75em, 2.2vw, 0.85em);
+    padding: 5px 7px;
+    border: 1px solid #b8a47e;
+    background: #fffdf5;
+    border-radius: 3px;
+  }
+  .item-row input:focus { outline: none; border-color: #c0392b; background: white; }
+  .item-row .num {
+    font-family: 'Caveat', cursive;
+    color: #8b6f47;
+    width: 22px;
+    font-size: clamp(0.85em, 2.5vw, 0.95em);
+  }
+  .item-row button {
+    background: none;
+    border: none;
+    color: #c0392b;
+    cursor: pointer;
+    font-size: clamp(1em, 3vw, 1.2em);
+    padding: 0 4px;
+  }
+
+  .add-btn {
+    font-family: 'Kalam', cursive;
+    background: transparent;
+    border: 1px dashed #8b6f47;
+    color: #8b6f47;
+    padding: 5px 10px;
+    margin-top: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: clamp(0.75em, 2.2vw, 0.85em);
+  }
+  .add-btn:hover { background: rgba(139,111,71,0.08); }
+
+  .save-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(1em, 3vw, 1.3em);
+    padding: 5px 16px;
+    border: 2px solid #2b2418;
+    background: #fffdf5;
+    color: #2b2418;
+    cursor: pointer;
+    border-radius: 3px;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+  }
+  .btn:hover { background: #fff3cd; }
+  .btn.primary { background: #c0392b; color: #fffdf5; border-color: #c0392b; }
+  .btn.primary:hover { background: #a5301f; }
+  .btn.danger { background: #fff; color: #c0392b; border-color: #c0392b; }
+
+  .saved-toast {
+    font-family: 'Caveat', cursive;
+    color: #2e7d32;
+    font-size: clamp(0.95em, 2.8vw, 1.1em);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .saved-toast.show { opacity: 1; }
+
+  .bingo-popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(43,36,24,0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    padding: 20px;
+    animation: fadeIn 0.3s;
+  }
+  .bingo-popup.open { display: flex; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  .bingo-content {
+    background: #fffef8;
+    border: 4px solid #c0392b;
+    border-radius: 12px;
+    padding: clamp(20px, 5vw, 30px) clamp(16px, 4vw, 24px);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 0 60px rgba(255, 215, 0, 0.6);
+    animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  @keyframes popIn {
+    0% { transform: scale(0.3) rotate(-10deg); opacity: 0; }
+    100% { transform: scale(1) rotate(0); opacity: 1; }
+  }
+
+  .bingo-content::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(255,215,0,0.2) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(192,57,43,0.15) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  .bingo-title {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(3.5em, 12vw, 5em);
+    font-weight: 700;
+    color: #c0392b;
+    line-height: 1;
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 0 #ffd700, 6px 6px 0 rgba(0,0,0,0.1);
+    transform: rotate(-3deg);
+    margin-bottom: 10px;
+    animation: wiggle 2s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
+  }
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+  }
+
+  .bingo-subtitle {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(1.3em, 4vw, 1.7em);
+    color: #2b2418;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .bingo-time {
+    font-family: 'Kalam', cursive;
+    font-size: clamp(1.1em, 3.5vw, 1.4em);
+    color: #2b2418;
+    background: #fff3cd;
+    border: 2px dashed #c0392b;
+    padding: 10px 16px;
+    border-radius: 6px;
+    margin: 14px 0;
+    position: relative;
+    z-index: 1;
+  }
+  .bingo-time .label {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(0.8em, 2.5vw, 0.95em);
+    color: #8b6f47;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .bingo-time .value {
+    font-weight: 700;
+    color: #c0392b;
+    font-size: clamp(1em, 3vw, 1.2em);
+  }
+
+  .bingo-rank {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(1.5em, 5vw, 1.9em);
+    color: #c0392b;
+    margin: 10px 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .bingo-hint {
+    font-family: 'Kalam', cursive;
+    font-size: clamp(0.75em, 2.2vw, 0.9em);
+    color: #5a4a35;
+    margin: 10px 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .bingo-close {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(1.2em, 3.5vw, 1.5em);
+    padding: 8px 28px;
+    border: 2px solid #c0392b;
+    background: #c0392b;
+    color: #fffdf5;
+    cursor: pointer;
+    border-radius: 30px;
+    margin-top: 8px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+  }
+  .bingo-close:hover { background: #a5301f; }
+
+  .confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @media print {
+    body { background: white; }
+    .admin-trigger, .set-badge, .reset-btn, .back-btn, .landing { display: none; }
+    .card-view { display: flex !important; }
+    .card { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="landing" id="landing">
+    <header>
+      <h1 id="displayTitle">SA Orientation & <span>BBQ</span> Bingo</h1>
+    </header>
+    <div class="sub">Pick your set to start</div>
+
+    <button class="set-btn a" onclick="openSet('A')">
+      Set A
+      <span class="label">HKUST campus life</span>
+    </button>
+    <button class="set-btn b" onclick="openSet('B')">
+      Set B
+      <span class="label">Orientation & BBQ day</span>
+    </button>
+    <button class="set-btn c" onclick="openSet('C')">
+      Set C
+      <span class="label">Personal habits</span>
+    </button>
+  </div>
+
+  <div class="card-view" id="cardView">
+    <button class="back-btn" onclick="goBack()">← back to sets</button>
+
+    <div class="set-badge">
+      playing <b id="setLabel">Set A</b>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title" id="cardTitle">Set A</div>
+        <button class="reset-btn" onclick="resetMarks()">reset marks</button>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </div>
+
+</div>
+
+<button class="admin-trigger" onclick="openAdmin()" title="admin">⚙</button>
+
+<div class="bingo-popup" id="bingoPopup">
+  <div class="bingo-content" id="bingoContent">
+    <div class="bingo-title">BINGO!</div>
+    <div class="bingo-subtitle">you got 5 in a row!</div>
+    <div class="bingo-rank" id="bingoRank">#1</div>
+    <div class="bingo-time">
+      <span class="label">finished at</span>
+      <span class="value" id="bingoTime">--:--:--</span>
+    </div>
+    <div class="bingo-hint">📸 screenshot this for proof!<br>show it to the team to claim your prize.</div>
+    <button class="bingo-close" onclick="onBingoClose()">yeah~</button>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="adminModal">
+  <div class="modal">
+    <button class="close" onclick="closeAdmin()">×</button>
+    <h2>backend</h2>
+    <div class="hint">only the SA team should be here.</div>
+
+    <div id="pinGate">
+      <label>enter the pin</label>
+      <input type="text" id="pinInput" placeholder="enter pin" autocomplete="off">
+      <div class="save-row">
+        <button class="btn primary" onclick="checkPin()">enter</button>
+        <button class="btn" onclick="closeAdmin()">cancel</button>
+      </div>
+    </div>
+
+    <div id="adminPanel" style="display:none;">
+
+      <label>title (main heading)</label>
+      <input type="text" id="inTitle" placeholder="e.g. SA Orientation & BBQ Bingo">
+      <div class="hint">use &lt;span&gt;text&lt;/span&gt; to highlight a word in red.</div>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="A">Set A</button>
+        <button class="tab" data-tab="B">Set B</button>
+        <button class="tab" data-tab="C">Set C</button>
+      </div>
+
+      <div class="tab-panel active" data-panel="A">
+        <div class="hint">exactly 25 items. item #1 will be in the center.</div>
+        <div id="itemsA"></div>
+        <button class="add-btn" onclick="addItem('A')">+ add item</button>
+      </div>
+      <div class="tab-panel" data-panel="B">
+        <div class="hint">exactly 25 items. item #1 will be in the center.</div>
+        <div id="itemsB"></div>
+        <button class="add-btn" onclick="addItem('B')">+ add item</button>
+      </div>
+      <div class="tab-panel" data-panel="C">
+        <div class="hint">exactly 25 items. item #1 will be in the center.</div>
+        <div id="itemsC"></div>
+        <button class="add-btn" onclick="addItem('C')">+ add item</button>
+      </div>
+
+      <div class="save-row">
+        <button class="btn primary" onclick="saveAll()">save changes</button>
+        <button class="btn" onclick="resetDefaults()">reset to defaults</button>
+        <button class="btn" onclick="changePin()">change pin</button>
+        <span class="saved-toast" id="toast">✓ saved</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const DEFAULTS = {
+    pin: '2026',
+    title: 'SA Orientation & <span>BBQ</span> Bingo',
+    A: [
+      "Lived in an odd-numbered UG Hall (I, III, V, VII, or IX)",
+      "Slept overnight in Learning Commons",
+      "Played the piano at LG5",
+      "Ate at LG7 canteen for 7+ days straight",
+      "Had BBQ at the UST BBQ site",
+      "Served as an MC for a ceremony or public affairs event",
+      "Visited 7/F of the Academic Building",
+      "Took a photo in front of the Red Bird",
+      "Studied at the Library until sunrise",
+      "Set up a booth or shouted with a megaphone at Concourse",
+      "Completed an overseas exchange semester",
+      "Stepped on the Wisdom Stone",
+      "Submitted on Canvas <1 minute before the deadline",
+      "Ordered late-night McDonald's delivery into campus",
+      "Ordered Keeta/food delivery to a UST pick-up point",
+      "Performed on stage at Shaw Auditorium",
+      "Drove a car onto the HKUST campus",
+      "Swam in the UST outdoor swimming pool",
+      "Walked down to the seafront at night",
+      "Attended O-Camp",
+      "Carried a group project",
+      "Found your partner (couple) at HKUST",
+      "Bought late-night supper from Seafront Cafeteria (Hall 6 Canteen)",
+      "Missed an exam from waking up late",
+      "Stayed in UST during a Typhoon Signal No. 8"
+    ],
+    B: [
+      "Everyone at the table wears glasses (or contact lenses)",
+      "Include Year 1, Year 2, Year 3, and Year 4 students at your table",
+      "Same table consists of people from at least 3 different Schools (SBM, SENG, SSCI, SHSS, AIS)",
+      "Have at least 2 left-handed people sitting at your table",
+      "Have someone at your table wearing white shoes (all white)",
+      "Found someone at your table who shares the exact same birthday month",
+      "Found someone at your table who went to the same secondary school",
+      "Have local and non-local students all at the same table",
+      "Have at least 3 people at your table living in the same district (e.g., Shatin, Tseung Kwan O)",
+      "Been to this BBQ site at least 2 times (including today, has to be UST-related occasions)",
+      "Found someone at your table with the exact same phone case brand (e.g. Casetify) as yours",
+      "Have at least 4 people at your table using the exact same phone model series (e.g. iPhone 17)",
+      "Have at least 4 people at your table wearing shirts with collar",
+      "Have at least 3 people at your table who is currently living in the same HKUST Hall",
+      "New SAs outnumber current SAs at your table",
+      "Attended both the Info session (either physical / online in Sep 2026) and the BBQ today",
+      "Have at least 4 people at your table born in the exact same year",
+      "Have someone at your table who is a double-major or minor student",
+      "Did not bring a bag to the BBQ today",
+      "Have at least 4 people at your table wearing a watch on their left wrist today",
+      "Have at least 2 people at your table wearing laceless shoes (e.g., Crocs, loafers, slides) today",
+      "Have at least 3 people at your table who can speak 4 or more languages",
+      "Have at least 5 people at your table who currently own a pet",
+      "Have at least 5 people at your table who watched a movie at a cinema between 24 Nov – 1 Dec",
+      "Have at least 3 people at your table who visited Hong Kong Disneyland between 1 Nov – 1 Dec"
+    ],
+    C: [
+      "Have over 1,000 followers on an individual social media platform",
+      "Set 5+ alarms spaced 5 minutes apart every morning",
+      "Have a public or private \"spam\" / finsta Instagram account",
+      "Carry a power bank everywhere (<20% battery triggers panic)",
+      "Never eat breakfast (always skip straight to lunch)",
+      "Stayed up until 5:00 AM binge-watching a series or anime",
+      "Drink at least 1 energy drink every weekday",
+      "Never let anyone eat before taking a food photo",
+      "Have more pet photos than selfies in your camera roll",
+      "Sing out loud like a concert every time you shower",
+      "Turned off WhatsApp \"Last Seen\" and Blue Ticks",
+      "Have 20+ items sitting in your Taobao or online shopping cart",
+      "Only wear short sleeves or shorts even during Hong Kong winter",
+      "Own a musical instrument (e.g., guitar, ukulele, violin) at home",
+      "Reply to group chats using only stickers or memes",
+      "Sending memes or reels to friends everyday",
+      "Always order \"Siu Lat\" (Mild Spicy) or higher at TamJai",
+      "Playing cards or chess with myself",
+      "Love controversial food combos (e.g., pineapple on pizza)",
+      "Work out or go to the gym at least 3 times a week",
+      "Speak a 4th language",
+      "Spotted a celebrity in public at the airport or on the street and took a photo with them",
+      "Consistently sleep before midnight and wake up before 8:00 AM",
+      "Have a random party trick (e.g., Rubik's cube under 1 min or pen spinning)",
+      "Have 100+ unread emails or WhatsApp messages on your phone"
+    ]
+  };
+
+  const STORAGE_KEY = 'saBingoConfig_v8';
+  const MARKS_KEY = 'saBingoMarks_v8';
+  const BINGO_DONE_KEY = 'saBingoDone_v8';
+
+  function loadConfig() {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) { try { return JSON.parse(raw); } catch(e) {} }
+    const c = JSON.parse(JSON.stringify(DEFAULTS));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(c));
+    return c;
+  }
+
+  function saveConfig(c) { localStorage.setItem(STORAGE_KEY, JSON.stringify(c)); }
+
+  function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({
+      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+    }[c]));
+  }
+
+  function escapeAttr(s) {
+    return String(s).replace(/"/g, '&quot;');
+  }
+
+  function formatDateTime(ts) {
+    const d = new Date(ts);
+    const pad = n => String(n).padStart(2, '0');
+    return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+  }
+
+  let currentConfig = loadConfig();
+  let currentSet = null;
+  let bingoTriggered = false;
+
+  function openSet(set) {
+    currentSet = set;
+    bingoTriggered = localStorage.getItem(BINGO_DONE_KEY + '_' + set) === '1';
+    document.getElementById('landing').classList.add('hidden');
+    document.getElementById('cardView').classList.add('active');
+    renderFrontend();
+  }
+
+  function goBack() {
+    document.getElementById('landing').classList.remove('hidden');
+    document.getElementById('cardView').classList.remove('active');
+    currentSet = null;
+  }
+
+  function renderFrontend() {
+    document.getElementById('displayTitle').innerHTML = currentConfig.title;
+    document.getElementById('setLabel').textContent = 'Set ' + currentSet;
+    document.getElementById('cardTitle').textContent = 'Set ' + currentSet;
+
+    const items = currentConfig[currentSet] || [];
+    if (items.length !== 25) {
+      console.error('Set must have exactly 25 items');
+      return;
+    }
+
+    const centerItem = items[0];
+    const otherItems = shuffle(items.slice(1));
+
+    const grid = document.getElementById('grid');
+    grid.innerHTML = '';
+    const centerIndex = 12;
+    const marks = loadMarks();
+
+    let itemIdx = 0;
+    for (let i = 0; i < 25; i++) {
+      const cell = document.createElement('div');
+      cell.className = 'cell';
+      cell.dataset.idx = i;
+
+      if (i === centerIndex) {
+        cell.classList.add('center-item');
+        cell.innerHTML = '<span>' + escapeHtml(centerItem) + '</span>';
+      } else {
+        cell.innerHTML = '<span>' + escapeHtml(otherItems[itemIdx]) + '</span>';
+        if (marks[currentSet] && marks[currentSet].includes(i)) {
+          cell.classList.add('marked');
+        }
+        itemIdx++;
+      }
+
+      cell.addEventListener('click', () => {
+        if (cell.classList.contains('free')) return;
+        cell.classList.toggle('marked');
+        saveMark(currentSet, i, cell.classList.contains('marked'));
+        checkBingo();
+      });
+
+      grid.appendChild(cell);
+    }
+  }
+
+  function loadMarks() {
+    const raw = localStorage.getItem(MARKS_KEY);
+    if (raw) try { return JSON.parse(raw); } catch(e) {}
+    return {};
+  }
+
+  function saveMark(set, idx, on) {
+    const marks = loadMarks();
+    if (!marks[set]) marks[set] = [];
+    if (on) {
+      if (!marks[set].includes(idx)) marks[set].push(idx);
+    } else {
+      marks[set] = marks[set].filter(x => x !== idx);
+    }
+    localStorage.setItem(MARKS_KEY, JSON.stringify(marks));
+  }
+
+  function resetMarks() {
+    if (!currentSet) return;
+    const marks = loadMarks();
+    marks[currentSet] = [];
+    localStorage.setItem(MARKS_KEY, JSON.stringify(marks));
+    localStorage.removeItem(BINGO_DONE_KEY + '_' + currentSet);
+    bingoTriggered = false;
+
+    const cells = document.querySelectorAll('#grid .cell');
+    cells.forEach(cell => {
+      cell.classList.remove('marked', 'bingo-cell');
+    });
+  }
+
+  function checkBingo() {
+    if (bingoTriggered) return;
+    const marks = loadMarks();
+    const marked = new Set(marks[currentSet] || []);
+
+    for (let r = 0; r < 5; r++) {
+      let win = true;
+      const cells = [];
+      for (let c = 0; c < 5; c++) {
+        const idx = r * 5 + c;
+        cells.push(idx);
+        if (!marked.has(idx)) { win = false; break; }
+      }
+      if (win) { triggerBingo(cells); return; }
+    }
+    for (let c = 0; c < 5; c++) {
+      let win = true;
+      const cells = [];
+      for (let r = 0; r < 5; r++) {
+        const idx = r * 5 + c;
+        cells.push(idx);
+        if (!marked.has(idx)) { win = false; break; }
+      }
+      if (win) { triggerBingo(cells); return; }
+    }
+    let d1 = true; const c1 = [];
+    for (let i = 0; i < 5; i++) {
+      const idx = i * 5 + i;
+      c1.push(idx);
+      if (!marked.has(idx)) { d1 = false; break; }
+    }
+    if (d1) { triggerBingo(c1); return; }
+    let d2 = true; const c2 = [];
+    for (let i = 0; i < 5; i++) {
+      const idx = i * 5 + (4 - i);
+      c2.push(idx);
+      if (!marked.has(idx)) { d2 = false; break; }
+    }
+    if (d2) { triggerBingo(c2); return; }
+  }
+
+  function triggerBingo(winningCells) {
+    bingoTriggered = true;
+    localStorage.setItem(BINGO_DONE_KEY + '_' + currentSet, '1');
+
+    const grid = document.getElementById('grid');
+    winningCells.forEach(idx => {
+      const cell = grid.querySelector(`[data-idx="${idx}"]`);
+      if (cell) cell.classList.add('bingo-cell');
+    });
+
+    const now = Date.now();
+    document.getElementById('bingoTime').textContent = formatDateTime(now);
+    document.getElementById('bingoRank').textContent = '#1 to finish';
+
+    const popup = document.getElementById('bingoPopup');
+    popup.classList.add('open');
+    spawnConfetti();
+  }
+
+  function onBingoClose() {
+    document.getElementById('bingoPopup').classList.remove('open');
+    document.querySelectorAll('.confetti').forEach(c => c.remove());
+  }
+
+  function spawnConfetti() {
+    const content = document.getElementById('bingoContent');
+    const colors = ['#c0392b', '#ffd700', '#4facfe', '#f093fb', '#2e7d32', '#ff6b6b'];
+    for (let i = 0; i < 40; i++) {
+      const c = document.createElement('div');
+      c.className = 'confetti';
+      c.style.background = colors[Math.floor(Math.random() * colors.length)];
+      c.style.left = Math.random() * 100 + '%';
+      c.style.top = '-10px';
+      c.style.width = (4 + Math.random() * 6) + 'px';
+      c.style.height = (4 + Math.random() * 6) + 'px';
+      c.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+      c.style.transform = `rotate(${Math.random() * 360}deg)`;
+      const duration = 1.5 + Math.random() * 2;
+      const drift = (Math.random() - 0.5) * 200;
+      c.animate([
+        { transform: `translate(0, 0) rotate(0deg)`, opacity: 1 },
+        { transform: `translate(${drift}px, 400px) rotate(${Math.random()*720}deg)`, opacity: 0 }
+      ], { duration: duration * 1000, easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)' });
+      content.appendChild(c);
+      setTimeout(() => c.remove(), duration * 1000);
+    }
+  }
+
+  function openAdmin() {
+    document.getElementById('adminModal').classList.add('open');
+    document.getElementById('pinGate').style.display = 'block';
+    document.getElementById('adminPanel').style.display = 'none';
+    document.getElementById('pinInput').value = '';
+    setTimeout(() => document.getElementById('pinInput').focus(), 50);
+  }
+
+  function closeAdmin() {
+    document.getElementById('adminModal').classList.remove('open');
+  }
+
+  function checkPin() {
+    const val = document.getElementById('pinInput').value;
+    if (val === currentConfig.pin) {
+      document.getElementById('pinGate').style.display = 'none';
+      document.getElementById('adminPanel').style.display = 'block';
+      populateAdmin();
+    } else {
+      alert('wrong pin. try again.');
+    }
+  }
+
+  function changePin() {
+    const cur = prompt('current pin:', '');
+    if (cur !== currentConfig.pin) { alert('wrong pin'); return; }
+    const np = prompt('new pin (4–8 characters):', '');
+    if (!np || np.length < 4) { alert('pin too short'); return; }
+    currentConfig.pin = np;
+    saveConfig(currentConfig);
+    alert('pin changed. remember it!');
+  }
+
+  function populateAdmin() {
+    document.getElementById('inTitle').value = currentConfig.title;
+    ['A','B','C'].forEach(s => renderItemList(s));
+  }
+
+  function renderItemList(set) {
+    const container = document.getElementById('items' + set);
+    container.innerHTML = '';
+    const items = currentConfig[set] || [];
+    items.forEach((it, i) => {
+      const row = document.createElement('div');
+      row.className = 'item-row';
+      row.innerHTML = `
+        <span class="num">${i+1}.</span>
+        <input type="text" value="${escapeAttr(it)}" data-set="${set}" data-i="${i}">
+        <button title="remove" onclick="removeItem('${set}', ${i})">×</button>
+      `;
+      container.appendChild(row);
+    });
+  }
+
+  function addItem(set) {
+    if (currentConfig[set].length >= 25) { alert('maximum 25 items per set.'); return; }
+    currentConfig[set].push('new item');
+    renderItemList(set);
+  }
+
+  function removeItem(set, i) {
+    if (currentConfig[set].length <= 25) { alert('need exactly 25 items per set.'); return; }
+    currentConfig[set].splice(i, 1);
+    renderItemList(set);
+  }
+
+  function collectItems() {
+    ['A','B','C'].forEach(set => {
+      const inputs = document.querySelectorAll(`#items${set} input`);
+      currentConfig[set] = Array.from(inputs).map(inp => inp.value.trim()).filter(v => v.length > 0);
+    });
+  }
+
+  function saveAll() {
+    currentConfig.title = document.getElementById('inTitle').value.trim() || DEFAULTS.title;
+    collectItems();
+
+    for (const s of ['A','B','C']) {
+      if (currentConfig[s].length !== 25) {
+        alert(`Set ${s} needs exactly 25 items (has ${currentConfig[s].length}).`);
+        return;
+      }
+    }
+
+    saveConfig(currentConfig);
+    if (currentSet) renderFrontend();
+    document.getElementById('displayTitle').innerHTML = currentConfig.title;
+    const t = document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 1800);
+  }
+
+  function resetDefaults() {
+    if (!confirm('reset everything to defaults? this cannot be undone.')) return;
+    const pin = currentConfig.pin;
+    currentConfig = JSON.parse(JSON.stringify(DEFAULTS));
+    currentConfig.pin = pin;
+    saveConfig(currentConfig);
+    populateAdmin();
+    document.getElementById('displayTitle').innerHTML = currentConfig.title;
+    if (currentSet) renderFrontend();
+  }
+
+  document.querySelectorAll('.tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const t = btn.dataset.tab;
+      document.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b === btn));
+      document.querySelectorAll('.tab-panel').forEach(p => {
+        p.classList.toggle('active', p.dataset.panel === t);
+      });
+    });
+  });
+
+  document.getElementById('pinInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') checkPin();
+  });
+
+  document.getElementById('adminModal').addEventListener('click', e => {
+    if (e.target.id === 'adminModal') closeAdmin();
+  });
+
+  document.getElementById('displayTitle').innerHTML = currentConfig.title;
+</script>
+</body>
 </html>
